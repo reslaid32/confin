@@ -5,8 +5,10 @@
 
 #include "cfdef.h" // confin/cfdef.h
 
+#ifndef __cplusplus
 // Enum for annotation types in configuration entries
 enum    __e_confin_annotype;
+#endif
 // Structure for the configuration file header
 struct  __s_confin_header;
 // Structure for each configuration entry

@@ -152,7 +152,7 @@ bool confin_validate_file(const char *filename) {
         return 0;
     }
 
-    cffile_t *config = malloc(sizeof(cfheader_t) + sizeof(cfentry_t) * header.entrycount);
+    cffile_t *config = (cffile_t*)malloc(sizeof(cfheader_t) + sizeof(cfentry_t) * header.entrycount);
     if (!config) {
         perror("malloc");
         fclose(file);

@@ -5,6 +5,10 @@
 
 #include "cftype.h" // confin/cftype.h
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // Macro to create a configuration entry
 #define cfcreatecfgentry(key, annotype, value, size) confin_create_config_entry(key, annotype, value, size)
 
@@ -36,5 +40,9 @@ void confin_display_config_entry(const cfentry_t *entry);
 // Function to free a configuration file
 // @param config: Pointer to the configuration file to be freed
 void confin_free_config_file(cffile_t *config);
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
 
 #endif // _CONFIN_UTILS_H

@@ -5,6 +5,10 @@
 
 #include "cftype.h" // confin/cftype.h
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // Macro to write the configuration to a file
 #define cfwritecfg(filename, entries, entrycount) confin_write_config(filename, entries, entrycount)
 
@@ -29,5 +33,9 @@ void confin_write_config_file(const char *filename, cffile_t *file);
 // @param filename: The name of the file to read the configuration from
 // @return: Pointer to the configuration file structure, or NULL on failure
 cffile_t *confin_read_config(const char *filename);
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
 
 #endif // _CONFIN_IO_H
