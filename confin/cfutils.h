@@ -14,7 +14,7 @@
 // @param value: The value to be stored in the configuration entry
 // @param size: The size of the value
 // @return: The created configuration entry
-cfentry_t confin_create_config_entry(const char *key, cfannotype_t type, const void *value, uint32_t size);
+cfentry_t confin_create_config_entry(const char *key, cfannotype_t type, const void *value, uint64_t size);
 
 // Macro to free a configuration entry
 #define cffreecfgentry(entry) confin_free_config_entry(entry)

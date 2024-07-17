@@ -10,7 +10,7 @@
 #include "../confin/cffmt.h"
 
 // Function to create sample entries
-void create_sample_entries(cfentry_t *entries, uint32_t *entry_count) {
+void create_sample_entries(cfentry_t *entries, uint64_t *entry_count) {
     int int_value = 42;
     float float_value = 3.14f;
     const char *string_value = "Hello, World!";
@@ -25,14 +25,14 @@ void create_sample_entries(cfentry_t *entries, uint32_t *entry_count) {
 // Test for writing and reading configuration file
 void test_write_read_config() {
     cfentry_t entries[3];
-    uint32_t entry_count;
+    uint64_t entry_count;
     create_sample_entries(entries, &entry_count);
 
     // Write configuration to file
     cfwritecfg("config_test.bin", entries, entry_count);
 
     // Free entries after writing to file
-    for (uint32_t i = 0; i < entry_count; ++i) {
+    for (uint64_t i = 0; i < entry_count; ++i) {
         cffreecfgentry(&entries[i]);
     }
 
@@ -66,35 +66,33 @@ void test_validate_config() {
     // Valid
     {
         cfentry_t entries[3];
-        uint32_t entry_count;
+        uint64_t entry_count;
         create_sample_entries(entries, &entry_count);
 
         // Write configuration to file
         cfwritecfg("config_test.bin", entries, entry_count);
 
         // Validate the configuration file format
-        bool is_valid = cfvalidatefile("config_test.bin");
-        assert(is_valid == true);
+        assert(cfvalidatefile("config_test.bin") == true);
 
         // Free entries after writing to file
-        for (uint32_t i = 0; i < entry_count; ++i) {
+        for (uint64_t i = 0; i < entry_count; ++i) {
             cffreecfgentry(&entries[i]);
         }
     }
     // Valid & Empty
     {
         cfentry_t entries[1];
-        uint32_t entry_count = 0;
+        uint64_t entry_count = 0;
 
         // Write configuration to file
         cfwritecfg("config_test_empty.bin", entries, entry_count);
 
         // Validate the configuration file format
-        bool is_valid = cfvalidatefile("config_test_empty.bin");
-        assert(is_valid == true);
+        assert(cfvalidatefile("config_test_empty.bin") == true);
 
         // Free entries after writing to file
-        for (uint32_t i = 0; i < entry_count; ++i) {
+        for (uint64_t i = 0; i < entry_count; ++i) {
             cffreecfgentry(&entries[i]);
         }
     }
@@ -115,8 +113,7 @@ void test_validate_config() {
         fclose(file);
 
         // Validate the configuration file format
-        bool is_valid = cfvalidatefile("empty_file.bin");
-        assert(is_valid == false);
+        assert(cfvalidatefile("empty_file.bin") == false);
     }
 }
 

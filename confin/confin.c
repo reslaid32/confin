@@ -11,7 +11,7 @@
 
 /* cfio implementation */
 
-void confin_write_config(const char *filename, cfentry_t *entries, uint32_t entrycount) {
+void confin_write_config(const char *filename, cfentry_t *entries, uint64_t entrycount) {
     FILE *file = fopen(filename, "wb");
     if (!file) {
         perror("fopen");
@@ -30,7 +30,7 @@ void confin_write_config(const char *filename, cfentry_t *entries, uint32_t entr
 }
 
 void confin_write_config_file(const char *filename, cffile_t *file) {
-    return confin_write_config(filename, file->entries, file->header.entrycount);
+    confin_write_config(filename, file->entries, file->header.entrycount);
 }
 
 cffile_t *confin_read_config(const char *filename) {
@@ -71,10 +71,14 @@ cffile_t *confin_read_config(const char *filename) {
 
 /* cfutils implementation */
 
-cfentry_t confin_create_config_entry(const char *key, cfannotype_t type, const void *value, uint32_t size) {
+cfentry_t confin_create_config_entry(const char *key, cfannotype_t type, const void *value, uint64_t size) {
     cfentry_t entry;
+    #ifdef _MSC_VER
+    strncpy_s(entry.key, sizeof(entry.key), key, _TRUNCATE);
+    #else
     strncpy(entry.key, key, __CONFIN_STRUCT_MAX_KEYLEN - 1);
     entry.key[__CONFIN_STRUCT_MAX_KEYLEN - 1] = '\0'; // Ensure null-termination
+    #endif
     entry.type = type;
     entry.size = size;
     entry.value = malloc(size);
@@ -95,7 +99,7 @@ void confin_free_config_entry(cfentry_t *entry) {
 }
 
 void confin_display_config_entry(const cfentry_t *entry) {
-    printf("Key: %s, Type: %u, Size: %u\n", entry->key, entry->type, entry->size);
+    printf("Key: %s, Type: %u, Size: %llu\n", entry->key, entry->type, entry->size);
 
     switch (entry->type) {
         case CONFIN_ANNOTYPE_INT:

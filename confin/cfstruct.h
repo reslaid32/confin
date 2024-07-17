@@ -37,14 +37,23 @@ struct __s_confin_entry {
         string: CONFIN_ANNOTYPE_STRING
     )*/
     enum __e_confin_annotype type;
-    uint32_t size;                        // Size of the value
+    uint64_t size;                        // Size of the value
     void *value;                          // Pointer to the value
 };
+
+#ifdef _MSC_VER
+    #pragma warning(push)
+    #pragma warning(disable: 4200)
+#endif
 
 // Structure for the entire configuration file
 struct __s_confin_file {
     struct __s_confin_header header; // Header of the configuration file
     struct __s_confin_entry entries[]; // Array of configuration entries
 };
+
+#ifdef _MSC_VER
+    #pragma warning(pop)
+#endif
 
 #endif // _CONFIN_STRUCT_H
