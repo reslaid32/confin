@@ -23,6 +23,19 @@ Specifies the version of the configuration file format.
 Defines the maximum length of a key in a configuration entry.
 > *Location*: [cfdef.h](./confin/cfdef.h)
 
+## __CONFIN_REF_ENTRY_VALUE(Value, Type)
+Macro to reference a value pointer of a given type.
+Parameters:
+- **Value**: Pointer to the value to be referenced.
+- **Type**: Type of the value to cast the referenced pointer to.
+> *Location*: [cfdef.h](./confin/cfdef.h)
+
+### CF_REF_ENTRYVAL(V, T)
+Alias for `__CONFIN_REF_ENTRY_VALUE`.
+- **V**: Pointer to the value to be referenced.
+- **T**: Type of the value to cast the referenced pointer to.
+> *Location*: [cfdef.h](./confin/cfdef.h)
+
 ### __CONFIN_UNREF_ENTRY_VALUE(Value, Type)
 Macro to dereference a value pointer of a given type.
 - **Value**: Pointer to the value to be dereferenced.
