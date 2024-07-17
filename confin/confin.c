@@ -2,10 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 #include "cftype.h" // confin/cftype.h
 #include "cfio.h" // confin/cfio.h
 #include "cfutils.h" // confin/cfutils.h
+#include "cffmt.h" // confin/cffmt.h
 
 /* cfio implementation */
 
@@ -32,6 +34,10 @@ void confin_write_config_file(const char *filename, cffile_t *file) {
 }
 
 cffile_t *confin_read_config(const char *filename) {
+    if (!confin_validate_file(filename)) {
+        return NULL;
+    }
+
     FILE *file = fopen(filename, "rb");
     if (!file) {
         perror("fopen");
@@ -122,4 +128,62 @@ void confin_free_config_file(cffile_t *config) {
         confin_free_config_entry(&config->entries[i]);
     }
     free(config);
+}
+
+/* cffmt implementation */
+
+bool confin_validate_file(const char *filename) {
+    FILE *file = fopen(filename, "rb");
+    if (!file) {
+        perror("fopen");
+        return 0;
+    }
+
+    cfheader_t header;
+    fread(&header, sizeof(cfheader_t), 1, file);
+
+    if (header.magic != __CONFIN_STRUCT_MAGIC_NUMBER) {
+        fprintf(stderr, "Invalid magic number\n");
+        fclose(file);
+        return 0;
+    }
+
+    if (header.version > __CONFIN_STRUCT_VERSION) {
+        // Unable to read confin format when the version of the confin library used in the file is higher than the current one, update the library
+        fprintf(stderr, "Invalid version\n");
+        fclose(file);
+        return 0;
+    }
+
+    cffile_t *config = malloc(sizeof(cfheader_t) + sizeof(cfentry_t) * header.entrycount);
+    if (!config) {
+        perror("malloc");
+        fclose(file);
+        return 0;
+    }
+
+    config->header = header;
+    for (uint32_t i = 0; i < header.entrycount; ++i) {
+        fread(&config->entries[i], sizeof(cfentry_t) - sizeof(void*), 1, file);
+
+        config->entries[i].value = malloc(config->entries[i].size);
+        if (!config->entries[i].value) {
+            perror("malloc");
+            fclose(file);
+            free(config);
+            return 0;
+        }
+
+        fread(config->entries[i].value, config->entries[i].size, 1, file);
+    }
+
+    fclose(file);
+
+    // Free allocated memory
+    for (uint32_t i = 0; i < header.entrycount; ++i) {
+        free(config->entries[i].value);
+    }
+    free(config);
+
+    return 1;
 }

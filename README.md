@@ -112,5 +112,10 @@ Frees the memory allocated for a configuration file structure after use.
 > *Reduction*: `cffreecfgfile`
 > *Location*: [cfutils.h](./confin/cfutils.h)
 
+### confin_validate_file
+Function to validate if a file conforms to the confin format
+> *Reduction*: `cfvalidatefile`
+> *Location*: [cffmt.h](./confin/cffmt.h)
+
 ## License
 This library is licensed under the MIT License. See [LICENSE](./LICENSE) for more details.
