@@ -1,7 +1,11 @@
 #ifndef _CONFIN_STRUCT_H
 #define _CONFIN_STRUCT_H
 
+#ifdef __cplusplus
+#include <cstdint>
+#else
 #include <stdint.h>
+#endif
 
 #include "cfdef.h" // confin/cfdef.h
 

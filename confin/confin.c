@@ -1,8 +1,15 @@
+#ifdef __cplusplus
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <cstdint>
+#else
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
 #include <stdbool.h>
+#endif
 
 #include "cftype.h" // confin/cftype.h
 #include "cfio.h" // confin/cfio.h

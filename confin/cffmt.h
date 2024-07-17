@@ -1,7 +1,9 @@
 #ifndef _CONFIN_FORMAT_H
 #define _CONFIN_FORMAT_H
 
+#ifndef __cplusplus
 #include <stdbool.h>
+#endif
 
 #ifdef __cplusplus
 extern "C" {
