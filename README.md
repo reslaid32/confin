@@ -1,4 +1,6 @@
-# Configuration File Library [CONFIN](https://github.com/reslaid32/confin.git)
+# Configuration File Library
+
+> **The repository is under development**
 
 This library provides a set of functions and structures to handle configuration files in a binary format. It includes functionality for creating, writing, reading, and managing configuration entries and files.
 
