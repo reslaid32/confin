@@ -103,10 +103,10 @@ void confin_display_config_entry(const cfentry_t *entry) {
 
     switch (entry->type) {
         case CONFIN_ANNOTYPE_INT:
-            printf("Value: %d\n", CF_REF_ENTRYVAL(entry->value, int));
+            printf("Value: %d\n", CF_UNREF_ENTRYVAL(entry->value, int));
             break;
         case CONFIN_ANNOTYPE_FLOAT:
-            printf("Value: %f\n", CF_REF_ENTRYVAL(entry->value, float));
+            printf("Value: %f\n", CF_UNREF_ENTRYVAL(entry->value, float));
             break;
         case CONFIN_ANNOTYPE_STRING:
             printf("Value: %s\n", CF_REF_ENTRYVAL(entry->value, char));
