@@ -14,6 +14,14 @@
 // @param entrycount: Number of configuration entries
 void confin_write_config(const char *filename, cfentry_t *entries, uint32_t entrycount);
 
+// Macro to write the configuration to a file [by cffile_t]
+#define cfwritecfgfile(filename, cffile) confin_write_config_file(filename, cffile)
+
+// Function to write the configuration file to a binary file
+// @param filename: The name of the file to write the configuration to
+// @param file: Pointer to the configuration file structure (`cffile_t`) to write
+void confin_write_config_file(const char *filename, cffile_t *file);
+
 // Macro to read the configuration from a file
 #define cfreadcfg(filename) confin_read_config(filename)
 

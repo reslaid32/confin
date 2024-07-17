@@ -66,6 +66,12 @@ Writes a set of configuration entries to a specified file.
 > *Reduction*: `cfwritecfg`
 > *Location*: [cfio.h](./confin/cfio.h)
 
+### confin_write_config_file
+Writes a set of configuration entries to a specified file.
+The `__s_confin_file` structure is used.
+> *Reduction*: `cfwritecfgfile`
+> *Location*: [cfio.h](./confin/cfio.h)
+
 ### confin_read_config
 Reads configuration entries from a specified file into a structure.
 > *Reduction*: `cfreadcfg`

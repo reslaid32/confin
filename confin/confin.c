@@ -27,6 +27,10 @@ void confin_write_config(const char *filename, cfentry_t *entries, uint32_t entr
     fclose(file);
 }
 
+void confin_write_config_file(const char *filename, cffile_t *file) {
+    return confin_write_config(filename, file->entries, file->header.entrycount);
+}
+
 cffile_t *confin_read_config(const char *filename) {
     FILE *file = fopen(filename, "rb");
     if (!file) {
