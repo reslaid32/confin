@@ -55,6 +55,7 @@ An enumeration defining the annotation types for configuration entries. Includes
 - `CONFIN_ANNOTYPE_INT`: Integer type
 - `CONFIN_ANNOTYPE_FLOAT`: Float type
 - `CONFIN_ANNOTYPE_STRING`: String type
+- `CONFIN_ANNOTYPE_STRUCT`: Struct type
 
 ### cfheader_t [struct __s_confin_header]
 Structure representing the header of a configuration file, containing:
@@ -65,7 +66,7 @@ Structure representing the header of a configuration file, containing:
 ### cfentry_t [struct __s_confin_entry]
 Structure representing a single entry in a configuration file, including:
 - `key`: Key associated with the entry.
-- `type`: Annotation type of the entry (integer, float, or string).
+- `type`: Annotation type of the entry.
 - `size`: Size of the value.
 - `value`: Pointer to the entry value.
 
