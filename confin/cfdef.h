@@ -13,7 +13,19 @@
 // Maximum length of a key in the configuration entry
 #define __CONFIN_STRUCT_MAX_KEYLEN      64
 
-#define __CONFIN_UNREF_ENTRY_VALUE(Value, Type) *(Type*)Value
+#define __CONFIN_REF_ENTRY_VALUE(Value, Type) (Type*)Value
+// Macro to reference a value pointer of a given type.
+// Parameters:
+// - Value: Pointer to the value to be referenced.
+// - Type: Type of the value to cast the referenced pointer to.
+
+#define CF_REF_ENTRYVAL(V, T) __CONFIN_REF_ENTRY_VALUE(V,T)
+// Macro alias for __CONFIN_REF_ENTRY_VALUE.
+// Parameters:
+// - V: Pointer to the value to be referenced.
+// - T: Type of the value to cast the referenced pointer to.
+
+#define __CONFIN_UNREF_ENTRY_VALUE(Value, Type) *__CONFIN_REF_ENTRY_VALUE(Value, Type)
 // Macro to dereference a value pointer of a given type.
 // Parameters:
 // - Value: Pointer to the value to be dereferenced.
