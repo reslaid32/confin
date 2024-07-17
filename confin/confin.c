@@ -41,7 +41,7 @@ cffile_t *confin_read_config(const char *filename) {
     }
 
     cfheader_t header;
-    (void)fread(&header, sizeof(cfheader_t), 1, file);
+    size_t items_read = fread(&header, sizeof(cfheader_t), 1, file);
 
     cffile_t *config = (cffile_t*)malloc(sizeof(cfheader_t) + sizeof(cfentry_t) * header.entrycount);
     if (!config) {
@@ -52,7 +52,7 @@ cffile_t *confin_read_config(const char *filename) {
 
     config->header = header;
     for (uint32_t i = 0; i < header.entrycount; ++i) {
-        (void)fread(&config->entries[i], sizeof(cfentry_t) - sizeof(void*), 1, file);
+        size_t items_read = fread(&config->entries[i], sizeof(cfentry_t) - sizeof(void*), 1, file);
 
         config->entries[i].value = malloc(config->entries[i].size);
         if (!config->entries[i].value) {
@@ -62,9 +62,9 @@ cffile_t *confin_read_config(const char *filename) {
             return NULL;
         }
 
-        (void)fread(config->entries[i].value, config->entries[i].size, 1, file);
+        size_t items_read = fread(config->entries[i].value, config->entries[i].size, 1, file);
     }
-
+    (void)items_read;
     fclose(file);
     return config;
 }
@@ -134,7 +134,7 @@ bool confin_validate_file(const char *filename) {
     }
 
     cfheader_t header;
-    (void)fread(&header, sizeof(cfheader_t), 1, file);
+    size_t items_read = fread(&header, sizeof(cfheader_t), 1, file);
 
     if (header.magic != __CONFIN_STRUCT_MAGIC_NUMBER) {
         fprintf(stderr, "Invalid magic number\n");
@@ -158,7 +158,7 @@ bool confin_validate_file(const char *filename) {
 
     config->header = header;
     for (uint32_t i = 0; i < header.entrycount; ++i) {
-        (void)fread(&config->entries[i], sizeof(cfentry_t) - sizeof(void*), 1, file);
+        size_t items_read = fread(&config->entries[i], sizeof(cfentry_t) - sizeof(void*), 1, file);
 
         config->entries[i].value = malloc(config->entries[i].size);
         if (!config->entries[i].value) {
@@ -168,7 +168,7 @@ bool confin_validate_file(const char *filename) {
             return 0;
         }
 
-        (void)fread(config->entries[i].value, config->entries[i].size, 1, file);
+        size_t items_read = fread(config->entries[i].value, config->entries[i].size, 1, file);
     }
 
     fclose(file);
