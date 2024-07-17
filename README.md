@@ -37,9 +37,9 @@ Alias for `CONFIN_UNREF_ENTRY_VALUE`.
 
 ### cfannotype_t [enum __e_confin_annotype]
 An enumeration defining the annotation types for configuration entries. Includes:
-- CONFIN_ANNOTYPE_INT: Integer type
-- CONFIN_ANNOTYPE_FLOAT: Float type
-- CONFIN_ANNOTYPE_STRING: String type
+- `CONFIN_ANNOTYPE_INT`: Integer type
+- `CONFIN_ANNOTYPE_FLOAT`: Float type
+- `CONFIN_ANNOTYPE_STRING`: String type
 
 ### cfheader_t [struct __s_confin_header]
 Structure representing the header of a configuration file, containing:
