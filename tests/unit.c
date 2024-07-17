@@ -1,7 +1,13 @@
+#ifdef __cplusplus
+#include <cassert>
+#include <cstdio>
+#include <cstring>
+#else
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#endif
 
 #include "../confin/cfstruct.h"
 #include "../confin/cftype.h"
