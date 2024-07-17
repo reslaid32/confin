@@ -99,7 +99,7 @@ void confin_free_config_entry(cfentry_t *entry) {
 }
 
 void confin_display_config_entry(const cfentry_t *entry) {
-    printf("Key: %s, Type: %u, Size: %lu\n", entry->key, entry->type, entry->size);
+    printf("Key: %s, Type: %u, Size: %llu\n", entry->key, entry->type, (unsigned long long int)entry->size);
 
     switch (entry->type) {
         case CONFIN_ANNOTYPE_INT:
