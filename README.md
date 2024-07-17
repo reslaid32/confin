@@ -6,12 +6,32 @@ This library provides a set of functions and structures to handle configuration 
 
 ### __CONFIN_STRUCT_MAGIC_NUMBER
 Defines the magic number used to verify the integrity of the configuration file.
+> *Location*: [cfdef.h](./confin/cfdef.h)
 
 ### __CONFIN_STRUCT_VERSION
 Specifies the version of the configuration file format.
+> *Location*: [cfdef.h](./confin/cfdef.h)
+
+### CF_STRUCT_VER
+Allias for `__CONFIN_STRUCT_VERSION`
+Specifies the version of the configuration file format.
+> *Location*: [cfdef.h](./confin/cfdef.h)
 
 ### __CONFIN_STRUCT_MAX_KEYLEN
 Defines the maximum length of a key in a configuration entry.
+> *Location*: [cfdef.h](./confin/cfdef.h)
+
+### __CONFIN_UNREF_ENTRY_VALUE(Value, Type)
+Macro to dereference a value pointer of a given type.
+- **Value**: Pointer to the value to be dereferenced.
+- **Type**: Type of the value to cast the dereferenced pointer to.
+> *Location*: [cfdef.h](./confin/cfdef.h)
+
+### CF_UNREF_ENTRYVAL(V, T)
+Alias for `CONFIN_UNREF_ENTRY_VALUE`.
+- **V**: Pointer to the value to be dereferenced.
+- **T**: Type of the value to cast the dereferenced pointer to.
+> *Location*: [cfdef.h](./confin/cfdef.h)
 
 ## Structures & Enums
 
@@ -70,3 +90,6 @@ Displays the key, type, size, and value of a configuration entry.
 Frees the memory allocated for a configuration file structure after use.
 > *Reduction*: `cffreecfgfile`
 > *Location*: [cfutils.h](./confin/cfutils.h)
+
+## License
+This library is licensed under the MIT License. See [LICENSE](./LICENSE) for more details.

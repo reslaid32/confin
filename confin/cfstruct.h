@@ -3,14 +3,7 @@
 
 #include <stdint.h>
 
-// Magic number for verifying the integrity of the configuration file
-#define __CONFIN_STRUCT_MAGIC_NUMBER    0xDEADBEEF
-
-// Version of the configuration file format
-#define __CONFIN_STRUCT_VERSION         1
-
-// Maximum length of a key in the configuration entry
-#define __CONFIN_STRUCT_MAX_KEYLEN      64
+#include "cfdef.h" // confin/cfdef.h
 
 // Enum for annotation types in configuration entries
 enum    __e_confin_annotype;
