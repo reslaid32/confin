@@ -18,7 +18,8 @@ struct  __s_confin_file;
 enum __e_confin_annotype {
     CONFIN_ANNOTYPE_INT,    // Integer type
     CONFIN_ANNOTYPE_FLOAT,  // Float type
-    CONFIN_ANNOTYPE_STRING  // String type
+    CONFIN_ANNOTYPE_STRING,  // String type
+    CONFIN_ANNOTYPE_STRUCT  // Structure type
 };
 
 // Structure for the configuration file header
@@ -34,7 +35,8 @@ struct __s_confin_entry {
     /* [Annotation] Type of the value (
         int: CONFIN_ANNOTYPE_INT,
         float: CONFIN_ANNOTYPE_FLOAT,
-        string: CONFIN_ANNOTYPE_STRING
+        string: CONFIN_ANNOTYPE_STRING,
+        struct: CONFIN_ANNOTYPE_STRUCT
     )*/
     enum __e_confin_annotype type;
     uint64_t size;                        // Size of the value
