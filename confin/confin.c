@@ -34,10 +34,6 @@ void confin_write_config_file(const char *filename, cffile_t *file) {
 }
 
 cffile_t *confin_read_config(const char *filename) {
-    if (!confin_validate_file(filename)) {
-        return NULL;
-    }
-
     FILE *file = fopen(filename, "rb");
     if (!file) {
         perror("fopen");
@@ -46,12 +42,6 @@ cffile_t *confin_read_config(const char *filename) {
 
     cfheader_t header;
     fread(&header, sizeof(cfheader_t), 1, file);
-    
-    if (header.magic != __CONFIN_STRUCT_MAGIC_NUMBER) {
-        fprintf(stderr, "Invalid magic number\n");
-        fclose(file);
-        return NULL;
-    }
 
     cffile_t *config = (cffile_t*)malloc(sizeof(cfheader_t) + sizeof(cfentry_t) * header.entrycount);
     if (!config) {
