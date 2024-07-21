@@ -293,5 +293,6 @@ bool confin_scan_file(const char *filename, char *output, size_t output_size) {
         free(config->entries[i].value);
     }
     free(config);
+    (void)items_read;
     return true;
 }
