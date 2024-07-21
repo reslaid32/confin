@@ -10,8 +10,6 @@
 #ifndef _CONFIN_UTILS_H
 #define _CONFIN_UTILS_H
 
-/* [!] Implementation of functions in the confin.c file */
-
 #include "cftype.h" // confin/cftype.h
 
 #ifdef __cplusplus
