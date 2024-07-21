@@ -18,6 +18,15 @@
 
 /* cfio implementation */
 
+/**
+ * @brief Writes the configuration to a file.
+ * 
+ * This function writes an array of configuration entries to a specified file.
+ * 
+ * @param filename The name of the file to write the configuration to.
+ * @param entries Array of configuration entries to write.
+ * @param entrycount Number of configuration entries.
+ */
 void confin_write_config(const char *filename, cfentry_t *entries, uint64_t entrycount) {
     FILE *file = fopen(filename, "wb");
     if (!file) {
@@ -36,10 +45,27 @@ void confin_write_config(const char *filename, cfentry_t *entries, uint64_t entr
     fclose(file);
 }
 
+/**
+ * @brief Writes the configuration file structure to a binary file.
+ * 
+ * This function writes the configuration file structure to a specified file.
+ * 
+ * @param filename The name of the file to write the configuration to.
+ * @param file Pointer to the configuration file structure (`cffile_t`) to write.
+ */
 void confin_write_config_file(const char *filename, cffile_t *file) {
     confin_write_config(filename, file->entries, file->header.entrycount);
 }
 
+/**
+ * @brief Reads the configuration from a file.
+ * 
+ * This function reads the configuration from the specified file and returns
+ * a pointer to the configuration file structure.
+ * 
+ * @param filename The name of the file to read the configuration from.
+ * @return Pointer to the configuration file structure, or NULL on failure.
+ */
 cffile_t *confin_read_config(const char *filename) {
     FILE *file = fopen(filename, "rb");
     if (!file) {
@@ -80,6 +106,18 @@ cffile_t *confin_read_config(const char *filename) {
 
 /* cfutils implementation */
 
+/**
+ * @brief Creates a configuration entry.
+ * 
+ * This function creates a new configuration entry with the specified key, type,
+ * value, and size. It allocates and initializes the configuration entry structure.
+ * 
+ * @param key The key for the configuration entry.
+ * @param type The type of the value (see @ref cfannotype_t).
+ * @param value The value to be stored in the configuration entry.
+ * @param size The size of the value.
+ * @return The created configuration entry.
+ */
 cfentry_t confin_create_config_entry(const char *key, cfannotype_t type, const void *value, uint64_t size) {
     cfentry_t entry;
     #ifdef _MSC_VER
@@ -100,6 +138,13 @@ cfentry_t confin_create_config_entry(const char *key, cfannotype_t type, const v
     return entry;
 }
 
+/**
+ * @brief Frees a configuration entry.
+ * 
+ * This function frees the memory allocated for a configuration entry.
+ * 
+ * @param entry Pointer to the configuration entry to be freed.
+ */
 void confin_free_config_entry(cfentry_t *entry) {
     if (entry->value) {
         free(entry->value);
@@ -107,6 +152,14 @@ void confin_free_config_entry(cfentry_t *entry) {
     }
 }
 
+/**
+ * @brief Displays a configuration entry.
+ * 
+ * This function displays the contents of a configuration entry, including its
+ * key, type, and value.
+ * 
+ * @param entry Pointer to the configuration entry to be displayed.
+ */
 void confin_display_config_entry(const cfentry_t *entry) {
     printf("Key: %s, Type: %u, Size: %llu\n", entry->key, entry->type, (unsigned long long int)entry->size);
 
@@ -126,6 +179,14 @@ void confin_display_config_entry(const cfentry_t *entry) {
     }
 }
 
+/**
+ * @brief Frees a configuration file.
+ * 
+ * This function frees the memory allocated for a configuration file, including
+ * its header and entries.
+ * 
+ * @param config Pointer to the configuration file to be freed.
+ */
 void confin_free_config_file(cffile_t *config) {
     for (uint32_t i = 0; i < config->header.entrycount; ++i) {
         confin_free_config_entry(&config->entries[i]);
@@ -135,6 +196,11 @@ void confin_free_config_file(cffile_t *config) {
 
 /* cffmt implementation */
 
+/**
+ * @brief Function to validate if a file conforms to the Confin format.
+ * @param filename The name of the file to validate.
+ * @return true if the file format is valid, false otherwise.
+ */
 bool confin_validate_file(const char *filename) {
     FILE *file = fopen(filename, "rb");
     if (!file) {
@@ -192,6 +258,13 @@ bool confin_validate_file(const char *filename) {
     return 1;
 }
 
+/**
+ * @brief Function to scan and write all information from a Confin format file to a string.
+ * @param filename The name of the file to scan.
+ * @param output The output string in which information about the file will be written.
+ * @param output_size Buffer size for output string.
+ * @return true if the file format is valid and information is displayed, false otherwise.
+ */
 bool confin_scan_file(const char *filename, char *output, size_t output_size) {
     FILE *file = fopen(filename, "rb");
     if (!file) {
