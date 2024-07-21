@@ -96,47 +96,45 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifndef _CONFIN_UTILS_H</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define _CONFIN_UTILS_H</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">/* [!] Implementation of functions in the confin.c file */</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="cftype_8h.html">cftype.h</a>&quot;</span> <span class="comment">// confin/cftype.h</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="cftype_8h.html">cftype.h</a>&quot;</span> <span class="comment">// confin/cftype.h</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="foldopen" id="foldopen00033" data-start="" data-end="">
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="cfutils_8h.html#a9b909d054e33df7a09f80f3ea781b068">   33</a></span><span class="preprocessor">#define cfcreatecfgentry(key, annotype, value, size) \</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">    confin_create_config_entry(key, annotype, value, size)</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="" data-end="">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="cfutils_8h.html#a9b909d054e33df7a09f80f3ea781b068">   31</a></span><span class="preprocessor">#define cfcreatecfgentry(key, annotype, value, size) \</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">    confin_create_config_entry(key, annotype, value, size)</span></div>
 </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><a class="code hl_struct" href="struct____s__confin__entry.html">cfentry_t</a> <a class="code hl_function" href="cfutils_8h.html#a4f0c4c1e15c76f935cf8ffac49c55eb3">confin_create_config_entry</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *key, <a class="code hl_typedef" href="cftype_8h.html#a3c7c8b7c992be63844180f56fedbe8e8">cfannotype_t</a> type, <span class="keyword">const</span> <span class="keywordtype">void</span> *value, uint64_t size);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="foldopen" id="foldopen00058" data-start="" data-end="">
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="cfutils_8h.html#a2f60b20faa32976e498925c73c939814">   58</a></span><span class="preprocessor">#define cffreecfgentry(entry) \</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">    confin_free_config_entry(entry)</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><a class="code hl_struct" href="struct____s__confin__entry.html">cfentry_t</a> <a class="code hl_function" href="cfutils_8h.html#a4f0c4c1e15c76f935cf8ffac49c55eb3">confin_create_config_entry</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *key, <a class="code hl_typedef" href="cftype_8h.html#a3c7c8b7c992be63844180f56fedbe8e8">cfannotype_t</a> type, <span class="keyword">const</span> <span class="keywordtype">void</span> *value, uint64_t size);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="foldopen" id="foldopen00056" data-start="" data-end="">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="cfutils_8h.html#a2f60b20faa32976e498925c73c939814">   56</a></span><span class="preprocessor">#define cffreecfgentry(entry) \</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">    confin_free_config_entry(entry)</span></div>
 </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keywordtype">void</span> <a class="code hl_function" href="cfutils_8h.html#a03c4224a116a3c981ad0b0b2c89fe4d0">confin_free_config_entry</a>(<a class="code hl_struct" href="struct____s__confin__entry.html">cfentry_t</a> *entry);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="foldopen" id="foldopen00078" data-start="" data-end="">
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="cfutils_8h.html#a7327744cd86c3363d0a98022685686e3">   78</a></span><span class="preprocessor">#define cfdisplaycfgentry(entry) \</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">    confin_display_config_entry(entry)</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keywordtype">void</span> <a class="code hl_function" href="cfutils_8h.html#a03c4224a116a3c981ad0b0b2c89fe4d0">confin_free_config_entry</a>(<a class="code hl_struct" href="struct____s__confin__entry.html">cfentry_t</a> *entry);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="foldopen" id="foldopen00076" data-start="" data-end="">
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="cfutils_8h.html#a7327744cd86c3363d0a98022685686e3">   76</a></span><span class="preprocessor">#define cfdisplaycfgentry(entry) \</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">    confin_display_config_entry(entry)</span></div>
 </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keywordtype">void</span> <a class="code hl_function" href="cfutils_8h.html#aa1b5382233b0f2ba7996331e2ecd9477">confin_display_config_entry</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct____s__confin__entry.html">cfentry_t</a> *entry);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="foldopen" id="foldopen00099" data-start="" data-end="">
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="cfutils_8h.html#a046901c52e1958b8363ef7e81cd89c21">   99</a></span><span class="preprocessor">#define cffreecfgfile(cfg) \</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">    confin_free_config_file(cfg)</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keywordtype">void</span> <a class="code hl_function" href="cfutils_8h.html#aa1b5382233b0f2ba7996331e2ecd9477">confin_display_config_entry</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct____s__confin__entry.html">cfentry_t</a> *entry);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="foldopen" id="foldopen00097" data-start="" data-end="">
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="cfutils_8h.html#a046901c52e1958b8363ef7e81cd89c21">   97</a></span><span class="preprocessor">#define cffreecfgfile(cfg) \</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">    confin_free_config_file(cfg)</span></div>
 </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keywordtype">void</span> <a class="code hl_function" href="cfutils_8h.html#a2e34d65422f1c013fcd5956b72367cf6">confin_free_config_file</a>(<a class="code hl_struct" href="struct____s__confin__file.html">cffile_t</a> *config);</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>} <span class="comment">// extern &quot;C&quot;</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="preprocessor">#endif </span><span class="comment">// _CONFIN_UTILS_H</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="keywordtype">void</span> <a class="code hl_function" href="cfutils_8h.html#a2e34d65422f1c013fcd5956b72367cf6">confin_free_config_file</a>(<a class="code hl_struct" href="struct____s__confin__file.html">cffile_t</a> *config);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>} <span class="comment">// extern &quot;C&quot;</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="preprocessor">#endif </span><span class="comment">// _CONFIN_UTILS_H</span></div>
 <div class="ttc" id="acftype_8h_html"><div class="ttname"><a href="cftype_8h.html">cftype.h</a></div></div>
 <div class="ttc" id="acftype_8h_html_a3c7c8b7c992be63844180f56fedbe8e8"><div class="ttname"><a href="cftype_8h.html#a3c7c8b7c992be63844180f56fedbe8e8">cfannotype_t</a></div><div class="ttdeci">enum __e_confin_annotype cfannotype_t</div><div class="ttdoc">Type alias for annotation types in configuration entries.</div><div class="ttdef"><b>Definition</b> cftype.h:22</div></div>
 <div class="ttc" id="acfutils_8h_html_a03c4224a116a3c981ad0b0b2c89fe4d0"><div class="ttname"><a href="cfutils_8h.html#a03c4224a116a3c981ad0b0b2c89fe4d0">confin_free_config_entry</a></div><div class="ttdeci">void confin_free_config_entry(cfentry_t *entry)</div><div class="ttdoc">Frees a configuration entry.</div><div class="ttdef"><b>Definition</b> confin.c:148</div></div>
