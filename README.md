@@ -36,7 +36,7 @@ Parameters:
 ### __CONFIN_GET_MINOR_VERSION
 Gets the minor version using bitwise operations (MAJOR.MINOR)
 Parameters:
-- **_Ver**: Whole version (`_CF_VER`](#_cf_ver) format)
+- **_Ver**: Whole version ([`_CF_VER`](#_cf_ver) format)
 > *Location*: [cfdef.h](./confin/cfdef.h)
 
 ### __CONFIN_STRUCT_MAX_KEYLEN
