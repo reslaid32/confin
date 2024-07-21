@@ -30,19 +30,6 @@ enum __e_confin_annotype;
 #endif
 
 /**
- * @struct __s_confin_header
- * @brief Structure for the configuration file header.
- * 
- * This structure represents the header of a configuration file and includes metadata
- * such as the magic number, version, and the number of entries in the file.
- */
-struct __s_confin_header {
-    uint32_t magic;         /**< Magic number to identify the configuration file */
-    uint32_t version;       /**< Version of the configuration file format */
-    uint64_t entrycount;    /**< Number of entries in the configuration file */
-};
-
-/**
  * @enum __e_confin_annotype
  * @brief Enum for annotation types in configuration entries.
  * 
@@ -54,6 +41,19 @@ enum __e_confin_annotype {
     CONFIN_ANNOTYPE_FLOAT,  /**< Float type */
     CONFIN_ANNOTYPE_STRING, /**< String type */
     CONFIN_ANNOTYPE_STRUCT  /**< Structure type */
+};
+
+/**
+ * @struct __s_confin_header
+ * @brief Structure for the configuration file header.
+ * 
+ * This structure represents the header of a configuration file and includes metadata
+ * such as the magic number, version, and the number of entries in the file.
+ */
+struct __s_confin_header {
+    uint32_t magic;         /**< Magic number to identify the configuration file */
+    uint32_t version;       /**< Version of the configuration file format */
+    uint64_t entrycount;    /**< Number of entries in the configuration file */
 };
 
 /**
