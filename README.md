@@ -10,20 +10,40 @@ This library provides a set of functions and structures to handle configuration 
 Defines the magic number used to verify the integrity of the configuration file.
 > *Location*: [cfdef.h](./confin/cfdef.h)
 
-### __CONFIN_STRUCT_VERSION
+### __CONFIN_VERSION
 Specifies the version of the configuration file format.
 > *Location*: [cfdef.h](./confin/cfdef.h)
 
-### CF_STRUCT_VER
-Allias for `__CONFIN_STRUCT_VERSION`
+### _CF_VER
+Allias for [`__CONFIN_VERSION`](#__confin_version)
 Specifies the version of the configuration file format.
+> *Location*: [cfdef.h](./confin/cfdef.h)
+
+### __CONFIN_MAJOR_VERSION
+Gets the confin major version
+> *Location*: [cfdef.h](./confin/cfdef.h)
+
+### __CONFIN_MINOR_VERSION
+Gets the confin minor version
+> *Location*: [cfdef.h](./confin/cfdef.h)
+
+### __CONFIN_GET_MAJOR_VERSION
+Gets the major version using bitwise operations (MAJOR.MINOR)
+Parameters:
+- **_Ver**: Whole version ([`_CF_VER`](#_cf_ver) format)
+> *Location*: [cfdef.h](./confin/cfdef.h)
+
+### __CONFIN_GET_MINOR_VERSION
+Gets the minor version using bitwise operations (MAJOR.MINOR)
+Parameters:
+- **_Ver**: Whole version (`_CF_VER`](#_cf_ver) format)
 > *Location*: [cfdef.h](./confin/cfdef.h)
 
 ### __CONFIN_STRUCT_MAX_KEYLEN
 Defines the maximum length of a key in a configuration entry.
 > *Location*: [cfdef.h](./confin/cfdef.h)
 
-## __CONFIN_REF_ENTRY_VALUE(Value, Type)
+### __CONFIN_REF_ENTRY_VALUE(Value, Type)
 Macro to reference a value pointer of a given type.
 Parameters:
 - **Value**: Pointer to the value to be referenced.
@@ -31,7 +51,7 @@ Parameters:
 > *Location*: [cfdef.h](./confin/cfdef.h)
 
 ### CF_REF_ENTRYVAL(V, T)
-Alias for `__CONFIN_REF_ENTRY_VALUE`.
+Alias for [`__CONFIN_REF_ENTRY_VALUE`](#__confin_ref_entry_valuevalue-type).
 - **V**: Pointer to the value to be referenced.
 - **T**: Type of the value to cast the referenced pointer to.
 > *Location*: [cfdef.h](./confin/cfdef.h)
@@ -43,7 +63,7 @@ Macro to dereference a value pointer of a given type.
 > *Location*: [cfdef.h](./confin/cfdef.h)
 
 ### CF_UNREF_ENTRYVAL(V, T)
-Alias for `CONFIN_UNREF_ENTRY_VALUE`.
+Alias for [`__CONFIN_UNREF_ENTRY_VALUE`](#__confin_unref_entry_valuevalue-type).
 - **V**: Pointer to the value to be dereferenced.
 - **T**: Type of the value to cast the dereferenced pointer to.
 > *Location*: [cfdef.h](./confin/cfdef.h)
@@ -116,6 +136,11 @@ Frees the memory allocated for a configuration file structure after use.
 ### confin_validate_file
 Function to validate if a file conforms to the confin format
 > *Reduction*: `cfvalidatefile`
+> *Location*: [cffmt.h](./confin/cffmt.h)
+
+### confin_validate_file
+Scan and write to string all information in a confin format file
+> *Reduction*: `cfscanfile`
 > *Location*: [cffmt.h](./confin/cffmt.h)
 
 ## License

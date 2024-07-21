@@ -7,5 +7,6 @@
 #include "cftype.h" // confin/cftype.h
 #include "cfio.h" // confin/cfio.h
 #include "cfutils.h" // confin/cfutil.h
+#include "cffmt.h" // confin/cffmt.h
 
 #endif // _CONFIN_SELF_H

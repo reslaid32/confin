@@ -2,10 +2,12 @@
 #include <cassert>
 #include <cstdio>
 #include <cstring>
+#include <cstdlib>
 #else
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #endif
 
@@ -136,6 +138,15 @@ void test_validate_config() {
         // Validate the configuration file format
         assert(cfvalidatefile("empty_file.bin") == false);
     }
+}
+
+// Test to check the functionality of displaying information about the config file
+void test_scan_config() {
+    size_t output_size = 0x2000;
+    char* output = (char*)malloc(output_size);
+    assert(cfscanfile("config_test.bin", output, output_size) == true);
+    printf("%s", output);
+    free(output);
 }
 
 // Test for creating and freeing configuration entries
