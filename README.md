@@ -138,7 +138,7 @@ Function to validate if a file conforms to the confin format
 > *Reduction*: `cfvalidatefile`
 > *Location*: [cffmt.h](./confin/cffmt.h)
 
-### confin_validate_file
+### confin_scan_file
 Scan and write to string all information in a confin format file
 > *Reduction*: `cfscanfile`
 > *Location*: [cffmt.h](./confin/cffmt.h)
